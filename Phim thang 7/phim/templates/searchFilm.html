@@ -1,0 +1,70 @@
+{% extends "layout_home.html" %}
+{% block content %}
+    <input type="text" id="myInput" onkeyup="filterFilm()" placeholder="Search ..." >
+    <div class="recommendations">
+        <h2>PHIM ĐỀ CỬ</h2>
+        <ul class="recommendations__track" id="searchFilm">
+            <li class="first-one"><a href="{{ url_for('movie', movie_id=6) }}"><img src="/static/images/moon-night.png" alt=""><div class="film-title">Moon Night(MCU)</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=4) }}"><img src="/static/images/peaky-blinders.png" alt=""><div class="film-title">Bóng ma Anh Quốc</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=5) }}"><img src="/static/images/spider-man-no-way-home.png" alt=""><div class="film-title">Người nhện vô gia cư</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=7) }}"><img src="/static/images/Pachinko.png" alt=""><div class="film-title">Pachinko</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=8) }}"><img src="/static/images/Ice-age.png" alt=""><div class="film-title">Kỉ băng hà</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=9) }}"><img src="/static/images/the-batman.png" alt=""><div class="film-title">The Batman</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=10) }}"><img src="/static/images/peace-maker.png" alt=""><div class="film-title">Sứ giả hòa bình</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=11) }}"><img src="/static/images/all-of-us-are-dead.png" alt=""><div class="film-title">Trường học xác sống</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=12) }}"><img src="/static/images/the-pirates.png" alt=""><div class="film-title">Cướp biển 2</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=13) }}"><img src="/static/images/the-tale.png" alt=""><div class="film-title">Hồi ký đau thương</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=14) }}"><img src="/static/images/tomorrow.png" alt=""><div class="film-title">Ngày mai</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=15) }}"><img src="/static/images/the-grizzlies.png" alt=""><div class="film-title">Hoa râm bụt</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=16) }}"><img src="/static/images/our-blue.png" alt=""><div class="film-title">Blues nơi đảo xanh</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=17) }}"><img src="/static/images/juvenile-justice.png" alt=""><div class="film-title">Tòa án vị thành niên</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=18) }}"><img src="/static/images/love-and-leashes.png" alt=""><div class="film-title">Tình yêu và trói buộc</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=19) }}"><img src="/static/images/demon-slayer.png" alt=""><div class="film-title">Thanh gươm diệt quỷ</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=20) }}"><img src="/static/images/attack-on-titan.png" alt=""><div class="film-title">Đại chiến titan</div></a></li>
+
+            <li><a href="{{ url_for('movie', movie_id=1) }}"><img src="/static/images/morbius.jpg" alt=""><div class="film-title">Người dơi MCU</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=2) }}"><img src="/static/images/jurassic-world-dominant.jpg" alt=""><div class="film-title">Thế giới khủng long: thống trị</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=3) }}"><img src="/static/images/jurassic-world-the-fall.jpg" alt=""><div class="film-title">Thế Giới Khủng Long 2: Vương Quốc Sụp Đổ</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=22) }}"><img src="/static/images/stranger-things.jpg" alt=""><div class="film-title">Cậu bé mất tích</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=23) }}"><img src="/static/images/love-death-robots.jpg" alt=""><div class="film-title">Tình Yêu, Cái Chết và Người Máy </div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=24) }}"><img src="/static/images/sound-of-magic.jpg" alt=""><div class="film-title">Âm thanh của phép thuật</div></a></li>
+            <li><a href="{{ url_for('movie', movie_id=21) }}"><img src="/static/images/again-my-life.png" alt=""><div class="film-title">Luật sư chuyển sinh</div></a></li>
+        
+        </ul>
+    </div>
+    <div class="Blockbusters" >
+        <h2>PHIM BOM TẤN</h2>
+        <ul class="blockbusters__track" id="searchFilm">
+            {% for movie in movies -%}
+            <li><a href="{{ url_for('movie', movie_id=movie.id) }}"><img src="{{ url_for('static', filename='movie_pics/' + movie.image) }}" alt=""><div class="film-title">{{ movie.movie_vn }}</div></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script>
+        function filterFilm() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("searchFilm");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+    </script>
+   <!--  <h1>Ket qua tim kiem cho {{ the_loai }}</h1>
+    <div class="Blockbusters">
+        <h2>PHIM BOM TẤN</h2>
+        <ul class="blockbusters__track">
+            {% for movie in movies -%}
+            <li><a href="{{ url_for('movie', movie_id=movie.id) }}"><img src="{{ url_for('static', filename='movie_pics/' + movie.image) }}" alt=""><div class="film-title">{{ movie.movie_vn }}</div></a></li>
+            {% endfor %}
+        </ul>
+    </div> -->
+{% endblock content%}

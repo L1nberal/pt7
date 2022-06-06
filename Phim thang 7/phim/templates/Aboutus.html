@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='Aboutus.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+    <title>Aboutus</title>
+</head>
+<body>
+    <!-- =================header-====================+ -->
+    <header class="header">
+        <div class="header__logo"><a href="{{url_for('intro')}}">Thang7</a></div>
+
+        <div class="header__nav">
+            <div class="header__nav-search"></div>
+
+            <div class="header__nav-list">
+                <ul>
+                    <li><a href="{{ url_for('searchphim') }}"><i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm</a></li>
+                    <li><a href="{{ url_for('phimhot') }}">Phim hot</a></li>
+                    <li><a href="{{ url_for('phimle') }}">Phim lẻ</a></li>
+                    <li><a href="{{ url_for('phimbo') }}">Phim bộ</a></li>
+                    <li><a href="{{ url_for('phimmoi') }}">Phim mới</a></li>
+                    <li><a href="">About us</a></li>
+                </ul>
+            </div>
+        </div>
+        {% if current_user.is_authenticated %}
+        <div class="user">
+            <i class="fa-solid fa-circle-user"></i>
+            <div class="username">{{current_user.username}}
+                <ul class="sub-menu">
+                    {% if current_user.username == 'admin'%}
+                    <li><a href="{{ url_for('upload') }}">Upload</a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('private') }}">Tài khoản của tôi</a></li>
+                    <li><a href="">Trạng thái</a></li>
+                    <li><a href="{{ url_for('logout') }}">Đăng xuất</a></li>
+                </ul>
+            </div>
+        </div>
+        {% else %}
+        <a class="header__client" href="{{url_for('login')}}">
+            Đăng nhập
+        </a>
+        {% endif %}
+    </header>
+    <!-- =============================end of header============================= -->
+
+    <!-- ======================content====================================== -->
+    <div class="wraper-content">
+        <div class="name2">
+            <div class="name Linh">
+                <div class="image"><img src="/static/images-xemphim/AdoraLinh.png" alt=""></div>
+                <div class="gather">
+                    <div class="ten">Tên: Trần Công Nhật Linh(Hoa chưa có chủ)</div><br>
+                    <div class="">Vai trò: Leader Front-end</div>
+                </div>
+                
+    
+            </div>
+    
+            <div class="name Dũng">
+                <div class="image"><img src="/static/images-xemphim/Hong Chae Dũng.jpg" alt=""></div>
+                <div class="gather">
+                    <div class="ten">Tên: Hồ Anh Dũng(Hoa suýt có chủ)</div><br>
+                    <div class="">Vai trò: Leader Back-end</div>
+                </div>
+               
+            </div>
+        </div>
+       
+
+        <div class="name2">
+            <div class="name Ánh">
+                <div class="image"> <img src="/static/images-xemphim/ÁnhUgly.jpg" alt=""></div>
+                <div class="gather">
+                    <div class="ten">Tên: Đỗ Minh Ánh(Hoa chưa bao giờ có chủ)</div><br>
+                    <div class="">Vai trò: Back-end</div>
+                </div>
+            </div>
+    
+            <div class="name Chung">
+                <div class="image"><img src="/static/images-xemphim/Chung Thiện Nữ.jpg" alt=""></div>
+                <div class="gather">
+                    <div class="ten">Tên: Vũ Thành Chung(Hoa đã có chủ, ai thích có thể đập chậu cướp hoa)</div><br>
+                    <div class="">Vai trò: Front-end</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="name2">
+            <div class="name Đức">
+                <div class="image"> <img src="/static/images-xemphim/Vũ Đức.jpg" alt=""></div>
+                <div class="gather">
+                    <div class="ten">Tên: Vũ Việt Đức(Hoa đã có chủ, ai thích có thể đập chậu cướp hoa)</div><br>
+                    <div class="">Vai trò: Back-end</div>
+                </div>
+            </div>
+    
+            <div class="name Thái">
+                <div class="image"><img src="/static/images-xemphim/Văn Thái.jpg" alt=""></div>
+                <div class="gather">
+                    <div class="ten">Tên: Lê Văn Thái(Hoa đã có chủ, ai thích có thể đập chậu cướp hoa)</div><br>
+                    <div class="">Vai trò: Front-end</div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- =================================end of content=============================== -->
+
+    
+</body>
+</html>

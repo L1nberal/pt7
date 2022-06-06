@@ -1,0 +1,12 @@
+images = ["","",""]
+
+images code : 2020_Action_Time.jpg
+
+for im in images:
+	if im[0:3] == 2020:
+		phim2020.append(im)
+
+if current_use == 'admin'
+
+phim moi: sort by movie.date
+phim hot: sort by movie.imdb
